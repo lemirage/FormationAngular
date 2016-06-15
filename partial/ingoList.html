@@ -1,0 +1,83 @@
+<section>
+  <p class="nbResult"> {{ingosFiltered.length }} / {{ingos.length}} results</p>
+  <input type="checkbox" ng-model="filters"/> Filters
+  </br>
+  <section class="filtres" id="filtres" ng-show="filters">
+      <div class="row">
+          <div class="two columns">
+            <input type="search" name="search" ng-model="search"  placeholder="Type your search >>">
+          </div>
+          <div class="two columns">
+            <select  name="" ng-model="selectedCountry">
+              <option value="">Choose a country</option>
+              <option  ng-repeat="countrie in countries" value="{{countrie}}">
+                {{countrie}}
+              </option>
+            </select>
+        </div>
+        <div class="four columns">
+            <select  name="" ng-model="selectedaoc">
+              <option value="">Choose a AOCS</option>
+                <option class="{{aoc.class}}"  ng-repeat="aoc in aocs" value="{{aoc.name}}">
+                  {{aoc.name}}
+                </option>
+
+            </select>
+        </div>
+        <div class="two columns">
+            <select  name="" ng-model="selectedCommities">
+              <option value="">Choose a committes</option>
+              <option  ng-repeat="committee in committees" value="{{committee}}">
+                {{committee}}
+              </option>
+            </select>
+            </div>
+      </div>
+  </section>
+
+  <!-- HEADER du tableau -->
+    <div class="row header">
+        <div class="two columns">
+        Name EN
+        </div>
+        <div class="two columns">
+        Name FR
+        </div>
+        <div class="two columns">
+        Address
+        </div>
+        <div class="two columns">
+          Contact
+        </div>
+        <div class="four columns">
+          Official  representative
+        </div>
+    </div>
+  <!-- Fin header-->
+  <div class="row" ng-repeat="ingo in ingosFiltered = (ingos | filter:search | filter:selectedCommities | filter:selectedaoc |filter:selectedCountry)">
+      <div class="two columns">
+    <span class="number">{{$index+1}}</span>   <a href="#/ingo/{{ingo.nameEn}}">{{ingo.nameEn}}</a>  ({{ingo.acronymEn}})
+      </div>
+      <div class="two columns">
+        {{ingo.nameFr}} ({{ingo.acronymFr}})
+      </div>
+      <div class="two columns">
+        {{ingo.street}}
+        {{ingo.postcode}}
+        {{ingo.town}}
+        {{ingo.country | uppercase}}
+      </div>
+      <div class="two columns">
+        {{ingo.tel}} <br />
+        {{ingo.fax}} <br />
+        <span ng-bind-html="ingo.email | link:email"></span>
+        <span ng-bind-html="ingo.website | link:website"></span>
+      </div>
+      <div class="four columns">
+        {{ingo.presidentFirstname}}
+        {{ingo.presidentLastname}}
+      </div>
+
+  </div>
+
+</section>

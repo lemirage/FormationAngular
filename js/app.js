@@ -1,15 +1,36 @@
-var app = angular.module('ingoApp',['ingoControllers','ngSanitize','ngRoute']);
+var app = angular.module('ingoApp',['ingoControllers','ngSanitize','ngRoute','ngResource']);
 
 var ingoControllers = angular.module('ingoControllers',[]);
 
 app.config(['$routeProvider',function($routeProvider){
     $routeProvider
+    .when('/',{
+      templateUrl:'partial/ingoList.html',
+      controller:'mainCtrl'
+    })
+    .when('/ingo-by-country',{
+      templateUrl:'partial/country.html',
+      controller:'ingoByCountryCtrl'
+    })
+    .when('/ingo-by-country/:country',{
+      templateUrl:'partial/ingoList.html',
+      controller:'mainCtrl'
+    })
+    .when('/ingo/:ingodetail',{
+      templateUrl:'partial/ingoDetail.html',
+      controller:'ingoDetailCtrl'
+    })
     .when('/test',{
-      templateUrl:'partial/test.html'
+      templateUrl:'partial/test.html',
+      controller:'testCtrl'
+    })
+    .otherwise({
+      redirectTo : '/'
     })
     .when('/login',{
       templateUrl:'partial/login.html'
     });
+
 }]);
 
 app.filter('website',function(){

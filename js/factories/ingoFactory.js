@@ -188,7 +188,7 @@ app.factory('ingoFactory',['$http','$q',function($http,$q){
       aocs : aocs,
       ingos: false,
       getIngosTemp:function(){
-        console.log("get");
+        //  console.log("get");
         return $http.get('ingos.json').then(
           function(res){
             return factory.ingos = res.data;
@@ -204,11 +204,11 @@ app.factory('ingoFactory',['$http','$q',function($http,$q){
           $http.get('ingos.json')
             .success(function(data){
               factory.ingos = data;
-              console.log(  factory.ingos);
+              //console.log(  factory.ingos);
               deferred.resolve(factory.ingos);
             })
             .error(function(error){
-              console.log("promesse rompue");
+            //  console.log("promesse rompue");
 
             });
 
@@ -241,9 +241,14 @@ app.factory('ingoFactory',['$http','$q',function($http,$q){
           });
         });
         return t;
+      },
+      getIngo:function(name){
+        var ingo = '';
+        ingo = _.findWhere(factory.ingos,{nameEn:name});
+        return ingo;
       }
     };
-console.log(factory.ingos);
+//console.log(factory.ingos);
   return factory;
 
 }]);

@@ -1,14 +1,28 @@
+<form novalidate name="frm">
 
-<div class="container">
-    <h1 class="title">Login</h1>
-    <form>
-      <div class="input-container">
-        <input type="text" id="Username" required="required"/>
-        <label for="Username">Username</label>
-        <div class="bar"></div>
-      </div>
-      <div class="button-container">
-        <button><span>Go</span></button>
-      </div>
-    </form>
-  </div>
+  <label for="email">login</label>
+  <input id="email"
+         type="email"
+         required
+         name="email"
+         value=""
+         placeholder="email"
+         ng-model="user.email"
+         >
+  <span ng-show="frm.email.$error.required && frm.email.$dirty">Requis</span>
+
+  <label for="pass">password</label>
+
+  <input id="pass"
+         type="password"
+         required
+         name="pass"
+         value=""
+         placeholder="password"
+         ng-model="user.password"
+         ng-minlength="5"
+         ng-maxlength="10">
+  <span ng-show="frm.pass.$error.required && frm.pass.$dirty">Requis</span>
+  <button  name="name" ng-disabled="frm.$invalid">Valider</button>
+
+</form>

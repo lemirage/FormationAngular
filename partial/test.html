@@ -1,1 +1,18 @@
-<h1>Test partial</h1>
+<button type="button" name="button" ng-click="changeLocation()">login</button>
+
+<ng-reset>
+</ng-reset>
+<ng-country>
+</ng-country>
+
+<p> {{userdetail.email}}</p>
+<p> {{userdetail.name}}</p>
+<p> {{userdetail.username}}</p>
+<p> {{userdetail.phone}}</p>
+<ul>
+  <li ng-repeat="user in users" ng-click="getUserDetail(user.id)">{{user.id}} - {{user.name}}
+    <ng-player info="user"
+    toto="jesuis">
+    </ng-player></li>
+</ul>
+<button type="button" name="button" ng-click="addUser()"> add User</button>

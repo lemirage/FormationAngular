@@ -1,5 +1,6 @@
 ingoControllers.controller('mainCtrl',
-['$scope','ingoFactory',function($scope,ingoFactory){
+['$scope','$rootScope','ingoFactory','$routeParams',function($scope,$rootScope,ingoFactory,$routeParams){
+
   /*$scope.ingos = [
     {
       "nameEn":"A Jewish Contribution to an Inclusive Europe",
@@ -361,13 +362,12 @@ ingoControllers.controller('mainCtrl',
   ]
   //  $scope
 */
+//console.log($routeParams.country);
 $scope.ingos ='';
-ingoFactory.aocsTransformed();
-/*if(!ingoFactory.ingos){
-    $scope.ingos = ingoFactory.getIngos();
-}else {
-    $scope.ingos = ingoFactory.ingos;
-}*/
+$rootScope.formation = {
+  name : 'angular JS'
+};
+
 $scope.filters = true;
   ingoFactory.getIngos().then(
     function(data){
@@ -381,4 +381,8 @@ $scope.filters = true;
   $scope.countries = ingoFactory.countries;
   $scope.aocs = ingoFactory.aocsTransformed("");
   $scope.committees = ingoFactory.committees;
+  if($routeParams.country !== undefined){
+    $scope.selectedCountry = $routeParams.country;
+    //console.log($routeParams.country);
+  }
 }]);

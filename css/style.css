@@ -29,3 +29,41 @@ div{
 .lvl2{
   margin-left: 10px;
 }
+nav ul{
+  list-style: none;
+  text-align: center;
+  width: auto;
+  border-bottom: solid 1px #000;
+}
+nav ul li{
+  display: inline-block;
+  padding-right: 50px;
+  padding-left: 5px;
+  margin: 5px;
+  border-left: solid 1px #000;
+
+
+}
+input.ng-invalid.ng-dirty{
+  border-color:red;
+/*  -moz-box-shadow: 10px 10px 5px 0px #fe0000;
+  -webkit-box-shadow: 10px 10px 5px 0px #fe0000;
+  -o-box-shadow: 10px 10px 5px 0px #fe0000;
+  box-shadow: 10px 10px 5px 0px #fe0000;
+filter:progid:DXImageTransform.Microsoft.Shadow(color=#fe0000, Direction=134, Strength=3);
+*/
+}
+
+input.ng-valid{
+  border-color:green;
+  /*-moz-box-shadow: 10px 10px 5px 0px #009901;
+  -webkit-box-shadow: 10px 10px 5px 0px #009901;
+  -o-box-shadow: 10px 10px 5px 0px #009901;
+  box-shadow: 10px 10px 5px 0px #009901;
+filter:progid:DXImageTransform.Microsoft.Shadow(color=#009901, Direction=134, Strength=3);
+*/
+}
+form.button{
+  opacity: 0.5;
+
+}
