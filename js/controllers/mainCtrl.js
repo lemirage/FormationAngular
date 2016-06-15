@@ -1,6 +1,6 @@
 ingoControllers.controller('mainCtrl',
-['$scope',function($scope){
-  $scope.ingos = [
+['$scope','ingoFactory',function($scope,ingoFactory){
+  /*$scope.ingos = [
     {
       "nameEn":"A Jewish Contribution to an Inclusive Europe",
       "acronymEn":"CEJI",
@@ -359,8 +359,26 @@ ingoControllers.controller('mainCtrl',
     }
 
   ]
-//  $scope
+  //  $scope
+*/
+$scope.ingos ='';
+ingoFactory.aocsTransformed();
+/*if(!ingoFactory.ingos){
+    $scope.ingos = ingoFactory.getIngos();
+}else {
+    $scope.ingos = ingoFactory.ingos;
+}*/
+$scope.filters = true;
+  ingoFactory.getIngos().then(
+    function(data){
+      $scope.ingos = data;
+    },
+    function(error){
+      console.log( error.status);
+    }
+  );
 
-
-
+  $scope.countries = ingoFactory.countries;
+  $scope.aocs = ingoFactory.aocsTransformed("");
+  $scope.committees = ingoFactory.committees;
 }]);

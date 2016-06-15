@@ -7,3 +7,25 @@ div{
   font-size: 1em;
   border-bottom: 1px solid #000;
 }
+.nbResult{
+  float:right;
+
+  margin-bottom:0px;
+}
+.row{
+  border-bottom: 1px solid #ccc;
+}
+.number{
+  background-color:#555;
+  color: white;
+  border-radius: 15px;
+  padding: 5px;
+  font-size: 0.7em;
+
+}
+.lvl1{
+  margin-left: 0px;
+}
+.lvl2{
+  margin-left: 10px;
+}
